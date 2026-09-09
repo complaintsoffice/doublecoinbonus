@@ -488,7 +488,7 @@ font-size:38px;font-weight:900;color:#ff5c8a;letter-spacing:.5px;margin-bottom:8
 <div class="notify-modal-backdrop" id="ddayModal">
 <div class="notify-modal">
 <div class="notify-modal-head">
-<h4>도착 · 놀랍게도 신혼임</h4>
+<h4>도착 · 신혼</h4>
 <button class="close-x" id="ddayModalClose">&#10005;</button>
 </div>
 <div class="notify-modal-body">
@@ -705,12 +705,12 @@ document.getElementById('allReviewCount').textContent = list.length.toLocaleStri
 const preview = list.slice(0, STORE.homePreviewCount);
 document.getElementById('homeReviewPreview').innerHTML = preview.length
 ? preview.map(r => reviewCardHTML(r, { showDelete: false })).join('')
-: `<div class="empty-state">아직 등록된 리뷰가 없어요.</div>`;
+: `<div class="empty-state">아직 등록된 리뷰가 없어요</div>`;
 
 // 전체 리스트 (리뷰 탭) - 관리자 모드일 때 삭제 버튼 표시
 document.getElementById('allReviewList').innerHTML = list.length
 ? list.map(r => reviewCardHTML(r, { showDelete: true })).join('')
-: `<div class="empty-state">아직 등록된 리뷰가 없어요.<br>첫 리뷰를 남겨보세요!</div>`;
+: `<div class="empty-state">아직 등록된 리뷰가 없어요<br>첫 리뷰를 남겨 보세요!</div>`;
 }
 
 /* 관리자 모드 진입/해제 */
