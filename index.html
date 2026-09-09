@@ -306,7 +306,7 @@ background:#fff7e6;border:1px solid #ffe1a8;color:#8a5d00;
 font-size:12.5px;border-radius:8px;padding:10px 12px;margin-bottom:14px;line-height:1.5;
 }
 
-/* 알림받기 이미지 모달 */
+/* 예약 이미지 모달 */
 .notify-modal-backdrop{
 display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);
 z-index:50;align-items:center;justify-content:center;padding:24px;
@@ -383,7 +383,7 @@ font-size:38px;font-weight:900;color:#ff5c8a;letter-spacing:.5px;margin-bottom:8
 <div class="action-pill soft" id="departurePill">출발</div>
 <div class="action-pill primary" id="arrivalPill">도착</div>
 <div class="action-pill" id="callPill">☎ 전화</div>
-<div class="action-pill" id="notifyPill">🔔 알림받기</div>
+<div class="action-pill" id="notifyPill">🗓️ 예약</div>
 </div>
 
 <section>
@@ -471,11 +471,11 @@ font-size:38px;font-weight:900;color:#ff5c8a;letter-spacing:.5px;margin-bottom:8
 
 </div>
 
-<!-- 이미지 안내 모달 (출발 / 알림받기 공용) -->
+<!-- 이미지 안내 모달 (출발 / 예약 공용) -->
 <div class="notify-modal-backdrop" id="notifyModal">
 <div class="notify-modal">
 <div class="notify-modal-head">
-<h4 id="notifyModalTitle">알림받기</h4>
+<h4 id="notifyModalTitle">예약</h4>
 <button class="close-x" id="notifyModalClose">&#10005;</button>
 </div>
 <div class="notify-modal-body">
@@ -505,7 +505,7 @@ font-size:38px;font-weight:900;color:#ff5c8a;letter-spacing:.5px;margin-bottom:8
 <div class="notify-modal-backdrop" id="msgModal">
 <div class="notify-modal">
 <div class="notify-modal-head">
-<h4 id="msgModalTitle">알림</h4>
+<h4 id="msgModalTitle">예약</h4>
 <button class="close-x" id="msgModalClose">&#10005;</button>
 </div>
 <div class="notify-modal-body">
@@ -544,7 +544,7 @@ coupleStartDate: "2026-08-18",
 // "출발" 버튼을 누르면 보여줄 고정 이미지 (원하는 이미지 URL로 교체)
 departureImage: "file1-2.jpg",
 
-// "알림받기" 버튼을 누르면 보여줄 고정 이미지 (원하는 이미지 URL로 교체)
+// "예약" 버튼을 누르면 보여줄 고정 이미지 (원하는 이미지 URL로 교체)
 notifyImage: "file2-2.jpg",
 
 // 별(즐겨찾기) 버튼을 누르면 뜨는 팝업 문구 (원하는 내용으로 수정 가능)
@@ -883,7 +883,7 @@ ddayModal.addEventListener('click', (e) => {
 if(e.target === ddayModal) ddayModal.classList.remove('open');
 });
 
-/* 이미지 모달 (출발 / 알림받기 공용) */
+/* 이미지 모달 (출발 / 예약 공용) */
 const notifyModal = document.getElementById('notifyModal');
 const notifyModalTitle = document.getElementById('notifyModalTitle');
 const notifyImageWrap = document.getElementById('notifyImageWrap');
@@ -900,7 +900,7 @@ document.getElementById('departurePill').addEventListener('click', () => {
 openImageModal('출발', STORE.departureImage);
 });
 document.getElementById('notifyPill').addEventListener('click', () => {
-openImageModal('알림받기', STORE.notifyImage);
+openImageModal('예약', STORE.notifyImage);
 });
 document.getElementById('notifyModalClose').addEventListener('click', () => {
 notifyModal.classList.remove('open');
