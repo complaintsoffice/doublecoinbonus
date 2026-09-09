@@ -354,8 +354,8 @@ font-size:38px;font-weight:900;color:#ff5c8a;letter-spacing:.5px;margin-bottom:8
 <div class="side"><span class="icon-btn">&#8592;</span></div>
 <h1 id="storeName">&nbsp;</h1>
 <div class="side right">
-<span class="icon-btn">&#9734;</span>
-<span class="icon-btn">&#10005;</span>
+<span class="icon-btn" id="favBtn">&#9734;</span>
+<span class="icon-btn" id="closeBtn">&#10005;</span>
 </div>
 </div>
 
@@ -501,6 +501,19 @@ font-size:38px;font-weight:900;color:#ff5c8a;letter-spacing:.5px;margin-bottom:8
 </div>
 </div>
 
+<!-- 별(즐겨찾기) / X(닫기) 클릭 시 뜨는 메시지 모달 -->
+<div class="notify-modal-backdrop" id="msgModal">
+<div class="notify-modal">
+<div class="notify-modal-head">
+<h4 id="msgModalTitle">알림</h4>
+<button class="close-x" id="msgModalClose">&#10005;</button>
+</div>
+<div class="notify-modal-body">
+<div style="font-size:15px; line-height:1.6; padding:8px 0;" id="msgModalText"></div>
+</div>
+</div>
+</div>
+
 <script>
 /* =================================================================
 모든 표시 텍스트/데이터는 이 STORE 객체 안에서 수정하면 됩니다.
@@ -533,6 +546,14 @@ departureImage: "file1-2.jpg",
 
 // "알림받기" 버튼을 누르면 보여줄 고정 이미지 (원하는 이미지 URL로 교체)
 notifyImage: "file2-2.jpg",
+
+// 별(즐겨찾기) 버튼을 누르면 뜨는 팝업 문구 (원하는 내용으로 수정 가능)
+favTitle: "👈",
+favMessage: "김도훈 님이 신정환 님을 콕 찔렀어요",
+
+// X(닫기) 버튼을 누르면 뜨는 팝업 문구 (원하는 내용으로 수정 가능)
+closeTitle: "아 잠만",
+closeMessage: "신정환 어디 가는데",
 
 menu: [
 { name: "꼰질머리 발동", desc: "대표 메뉴", price: "500 코인" },
@@ -886,6 +907,28 @@ notifyModal.classList.remove('open');
 });
 notifyModal.addEventListener('click', (e) => {
 if(e.target === notifyModal) notifyModal.classList.remove('open');
+});
+
+/* 별(즐겨찾기) / X(닫기) 버튼 -> 메시지 팝업 */
+const msgModal = document.getElementById('msgModal');
+
+function openMsgModal(title, message){
+document.getElementById('msgModalTitle').textContent = title;
+document.getElementById('msgModalText').textContent = message;
+msgModal.classList.add('open');
+}
+
+document.getElementById('favBtn').addEventListener('click', () => {
+openMsgModal(STORE.favTitle, STORE.favMessage);
+});
+document.getElementById('closeBtn').addEventListener('click', () => {
+openMsgModal(STORE.closeTitle, STORE.closeMessage);
+});
+document.getElementById('msgModalClose').addEventListener('click', () => {
+msgModal.classList.remove('open');
+});
+msgModal.addEventListener('click', (e) => {
+if(e.target === msgModal) msgModal.classList.remove('open');
 });
 
 /* 초기화 */
